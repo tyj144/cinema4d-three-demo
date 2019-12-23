@@ -8,18 +8,18 @@ let scene;
 const mixers = [];
 const clock = new THREE.Clock();
 
-const MODEL_PATH = "scene_garage.gltf";
+const MODEL_PATH = "scene_garage.glb";
 const startPosition = {
-  x: 0.18195096798711896,
-  y: -1.112188446897392,
-  z: -33.664122549907965
+  x: 0.4134059145847309,
+  y: -2.5269735421948907,
+  z: -76.48735000092316
 };
 
 function init() {
   container = document.querySelector("#scene-container");
 
   scene = new THREE.Scene();
-  //   scene.background = new THREE.Color(0x8fbcd4);
+  // scene.background = new THREE.Color(0xe0703b);
 
   createCamera();
   createControls();
@@ -51,17 +51,23 @@ function createControls() {
 function createLights() {
   const ambientLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 100000);
 
-  const mainLight = new THREE.DirectionalLight(0xffffff, 9);
-  var light = new THREE.PointLight(0xfffff, 10, 100);
+  const mainLight = new THREE.DirectionalLight(0xcccccc, 9);
+  var light = new THREE.DirectionalLight(0xcccccc, 9);
+  const OFFSET = 100;
   light.position.set(
-    startPosition.x + 10,
-    startPosition.y + 10,
-    startPosition.z + 10
+    startPosition.x + OFFSET,
+    startPosition.y + OFFSET * 2,
+    startPosition.z + OFFSET * 100
   );
   scene.add(light);
-  mainLight.position.set(startPosition.x, startPosition.y, startPosition.z);
+  mainLight.position.set(
+    startPosition.x * 4,
+    startPosition.y * 2,
+    startPosition.z
+  );
 
-  scene.add(ambientLight, mainLight);
+  scene.add(ambientLight);
+  scene.add(mainLight);
 }
 
 function loadModels() {
