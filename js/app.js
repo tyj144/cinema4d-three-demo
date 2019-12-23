@@ -134,7 +134,7 @@ function update() {
   //   see where the camera is, helpful for finding starting camera angle
   camera.updateMatrixWorld();
   var vector = camera.position.clone();
-  console.log(vector);
+  // console.log(vector);
 }
 
 function render() {
