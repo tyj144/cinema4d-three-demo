@@ -57,16 +57,16 @@ function createLights() {
   light.position.set(
     startPosition.x + OFFSET,
     startPosition.y + OFFSET * 2,
-    startPosition.z + OFFSET * 100
+    startPosition.z + OFFSET * 10
   );
   scene.add(light);
   mainLight.position.set(
-    startPosition.x * 4,
-    startPosition.y * 2,
+    startPosition.x * 2,
+    startPosition.y * 1,
     startPosition.z
   );
 
-  scene.add(ambientLight);
+  // scene.add(ambientLight);
   scene.add(mainLight);
 }
 
@@ -77,6 +77,7 @@ function loadModels() {
   // so that they can be individually placed around the scene
   const onLoad = (gltf, position) => {
     const model = gltf.scene;
+    console.log(model);
     model.position.copy(position);
 
     // const animation = gltf.animations[0];
@@ -118,7 +119,8 @@ function createRenderer() {
   renderer.setPixelRatio(window.devicePixelRatio);
 
   renderer.gammaFactor = 2.2;
-  renderer.gammaOutput = true;
+  // renderer.gammaOutput = true;
+  renderer.toneMappingExposure = 1.5;
 
   renderer.physicallyCorrectLights = true;
 
@@ -133,7 +135,7 @@ function update() {
   }
   //   see where the camera is, helpful for finding starting camera angle
   camera.updateMatrixWorld();
-  var vector = camera.position.clone();
+  // var vector = camera.position.clone();
   // console.log(vector);
 }
 
